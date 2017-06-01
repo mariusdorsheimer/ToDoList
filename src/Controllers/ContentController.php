@@ -41,9 +41,7 @@ class ContentController extends Controller {
         $newToDo = $toDoRepo->createTask($request->all());
 
         $this->getLogger('ContentController_createToDo')
-             ->setReferenceType('toDoId') // optional
-             ->setReferenceValue($newToDo->id) // optional
-             ->info('ToDoList::migration.createToDoInformation', ['userId' => $newToDo->userId ]);
+             ->error('ToDoList::migration.createToDoInformation');
 
         return json_encode($newToDo);
     }
