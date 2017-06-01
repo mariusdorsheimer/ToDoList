@@ -6,8 +6,6 @@ $('#addTask').click(function () {
         'taskDescription': nameInput.val()
     };
 
-    console.log(123);
-
     $.ajax({
         type: "POST",
         url: "/todo",
