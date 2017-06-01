@@ -4,6 +4,8 @@ namespace ToDoList\Migrations;
 
 use ToDoList\Models\ToDo;
 use Plenty\Modules\Plugin\DataBase\Contracts\Migrate;
+use Plenty\Plugin\Log\Loggable;
+
 
 
 /**
@@ -11,6 +13,7 @@ use Plenty\Modules\Plugin\DataBase\Contracts\Migrate;
  */
 class CreateToDoTable {
 
+    use Loggable;
 
     /**
      * @param Migrate $migrate
@@ -18,5 +21,7 @@ class CreateToDoTable {
     public function run(Migrate $migrate) {
 
         $migrate->createTable(ToDo::class);
+
+        $this->getLogger("CreateToDoTable_run")->debug('ToDoList::migration.successMessage', ['tableName' => 'ToDo']);
     }
 }
